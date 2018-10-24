@@ -44,10 +44,10 @@ public class ApexResponse {
 	public void init() {
 
 	    config = new WxMpInMemoryConfigStorage();
-	    config.setAppId("..."); // 设置微信公众号的appid
-	    config.setSecret("..."); // 设置微信公众号的app corpSecret
-	    config.setToken("..."); // 设置微信公众号的token
-	    config.setAesKey("..."); // 设置微信公众号的EncodingAESKey
+	    config.setAppId("wx8d9120e9483d3c87"); // 设置微信公众号的appid
+	    config.setSecret("39c3d9e405aceb7b6a9ba076c0837354"); // 设置微信公众号的app corpSecret
+	    config.setToken("apex2018china"); // 设置微信公众号的token
+	    config.setAesKey("tW1D5jVUGEpxOrG8DfcYynvJ2CX39nMI59AyMq1eXq9"); // 设置微信公众号的EncodingAESKey
 
 	    wxMpService = new WxMpServiceImpl();
 	    wxMpService.setWxMpConfigStorage(config);
@@ -81,7 +81,7 @@ public class ApexResponse {
 	
 	@GetMapping("/apexResponse/sendMessage")
     @Timed
-	public void sendMessage() throws Exception {
+	public void sendMessage(@RequestParam(value = "openid") String openid) throws Exception {
 		
 		/*WxMpInMemoryConfigStorage config = new WxMpInMemoryConfigStorage();
 		config.setAppId(appId); // 设置微信公众号的appid
@@ -94,7 +94,7 @@ public class ApexResponse {
 
 		// 用户的openid在下面地址获得 
 		// https://mp.weixin.qq.com/debug/cgi-bin/apiinfo?t=index&type=用户管理&form=获取关注者列表接口%20/user/get 
-		String openid = "...";
+		//String openid = "...";
 		WxMpCustomMessage message = WxMpCustomMessage.TEXT().toUser(openid).content("Hello World").build();
 		wxService.customMessageSend(message);
 		
